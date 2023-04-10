@@ -6,9 +6,9 @@ class Stack(SLL):
         super().__init__(head)
 
     def push(self, node):
-        super().insertHead(node)
+        super().insert_head(node)
     
-    def insertTail(self, node):
+    def insert_tail(self, node):
         return
     
     def peek(self):
@@ -16,9 +16,9 @@ class Stack(SLL):
     
     def pop(self):
         head = self.head
-        super().deleteHead()
+        super().delete_head()
         return head
     
-    def deleteTail(self):
+    def delete_tail(self):
         return
     
