@@ -7,7 +7,7 @@ class CSLL(SLL):
         if self.head:
             self.tail.next = self.head
 
-    def insertHead(self, node):
+    def insert_head(self, node):
         if not self.head:
             self.head = node
             self.tail = node
@@ -18,7 +18,7 @@ class CSLL(SLL):
             self.tail.next = self.head
         self.size += 1
 
-    def insertTail(self, node):
+    def insert_tail(self, node):
         if not self.head:
             self.head = node
             self.tail = node
@@ -33,9 +33,9 @@ class CSLL(SLL):
         if position < 0 or position > self.size:
             raise IndexError("Index out of range")
         elif position == 0:
-            self.insertHead(node)
+            self.insert_head(node)
         elif position == self.size:
-            self.insertTail(node)
+            self.insert_tail(node)
         else:
             current = self.head
             for i in range(position-1):
@@ -44,9 +44,9 @@ class CSLL(SLL):
             current.next = node
             self.size += 1
 
-    def sortedInsert(self, node):
+    def sorted_insert(self, node):
         if (self.size == 0):
-            self.insertHead(node)
+            self.insert_head(node)
             return
 
         current = self.head
@@ -63,9 +63,9 @@ class CSLL(SLL):
             self.tail = node
             node.next = self.head
         elif node.data < self.head.data:
-            self.insertHead(node)
+            self.insert_head(node)
         elif node.data > self.tail.data:
-            self.insertTail(node)
+            self.insert_tail(node)
         else:
             current = self.head
             while current.next != self.head and current.next.data < node.data:
@@ -160,12 +160,6 @@ class CSLL(SLL):
                 current = current.next
             previous = self.head
             current = self.head.next
-                    
-
-    def clear(self):
-        self.head = None
-        self.tail = None
-        self.size = 0
 
     def print(self):
         print("List Size: ", self.size)

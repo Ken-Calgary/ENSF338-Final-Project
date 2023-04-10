@@ -8,17 +8,16 @@ class SLL:
             while current is not None:
                 self.tail = current
                 current = current.next
+                self.size += 1
 
-            self.size += 1
-
-    def insertHead(self, node):
+    def insert_head(self, node):
         node.next = self.head
         self.head = node
         self.size += 1
         if self.size == 1:
             self.tail = node
 
-    def insertTail(self, node):
+    def insert_tail(self, node):
         if self.head is None:
             self.head = node
             self.tail = node
@@ -43,7 +42,7 @@ class SLL:
         node.next = current
         self.size+= 1
 
-    def sortedInsert(self, node):
+    def sorted_insert(self, node):
         if self.head is None:
             self.head = node
             self.tail = node
@@ -59,9 +58,9 @@ class SLL:
                 current = current.next
             
             if node.data < self.head.data:
-                self.insertHead(node)
+                self.insert_head(node)
             elif node.data > self.tail.data:
-                self.insertTail(node)
+                self.insert_tail(node)
             else:
                 current = self.head
                 while current.next is not None and node.data > current.next.data:
@@ -79,7 +78,7 @@ class SLL:
             current_node = current_node.next
         return None
 
-    def deleteHead(self):
+    def delete_head(self):
         if not self.head:
             return
         self.head = self.head.next
@@ -87,7 +86,7 @@ class SLL:
         if not self.head:
             self.tail = None
 
-    def deleteTail(self):
+    def delete_tail(self):
         if not self.head:
             return
         if self.size == 1:
@@ -106,7 +105,7 @@ class SLL:
         if not self.head:
             return
         if self.head.data == node.data:
-            self.deleteHead()
+            self.delete_head()
             return
         current_node = self.head.next
         prev_node = self.head
@@ -152,21 +151,26 @@ class SLL:
     def print(self):
         print("List Size: " ,self.size)
         
-        current = self.head
-        sorted = True
-        while current is not None and current.next is not None:
-            if current.data > current.next.data:
-                print("Sorted Status: Not Sorted")
-                sorted = False
-                break
-            current = current.next
-
-        if (sorted and self.size != 0):
-            print("Sort Status: Sorted")
+        if self.is_sorted():
+            print("Sorted Status: Sorted")
+        else:
+            print("Sorted Status: Not Sorted")
         
         current = self.head
         print("Content List: ", end = " ")
         while current is not None:
             print(current.data, end = " ")
             current = current.next
+        print("\n")
         
+    def is_sorted(self):
+            if not self.head or not self.head.next:
+                return True
+
+            current_node = self.head
+            while current_node.next:
+                if current_node.data > current_node.next.data:
+                    return False
+                current_node = current_node.next
+
+            return True
