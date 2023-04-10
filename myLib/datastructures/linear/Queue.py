@@ -2,7 +2,7 @@
 
 import random
 from SLL import SLL
-from datastructures.nodes.DNode import DNode
+from myLib.datastructures.nodes.DNode import DNode
 
 
 class LLQueue(SLL):
@@ -51,7 +51,7 @@ if __name__ == '__main__':
         queue.enqueue(node)
 
     queue.print()
-    print(queue.dequeue.data)
+    print(queue.dequeue().data)
     queue.print()
     print(queue.enqueue(DNode(5)))
     queue.print()
