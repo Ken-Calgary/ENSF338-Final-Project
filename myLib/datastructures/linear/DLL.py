@@ -1,8 +1,8 @@
 # Implementation of DoublyLinkedList
 
+import random
 from myLib.datastructures.nodes.DNode import DNode
 from SLL import SLL
-import random
 
 class DoublyLL(SLL):
 
@@ -50,7 +50,7 @@ class DoublyLL(SLL):
             self.head = new_node
             self.size += 1
         else:
-            if not self.isSorted():
+            if not self.is_sorted():
                 self.sort()
 
             if new_node.data <= self.head.data:
@@ -111,6 +111,8 @@ class DoublyLL(SLL):
                 continue
             
             # Remove the current node from its current position
+            if current_node == self.tail:
+                self.tail = current_node.prev
             current_node.prev.next = current_node.next
             if current_node.next is not None:
                 current_node.next.prev = current_node.prev
@@ -128,3 +130,16 @@ class DoublyLL(SLL):
             
             # Move to next node
             current_node = next_node
+
+if __name__ == '__main__':
+    dll = DoublyLL()
+    for i in range(10):
+        i = random.randint(0, 100)
+        node = DNode(i)
+        dll.insert_tail(node)
+
+    dll.print()
+    dll.sort()
+    dll.print()
+    dll.sorted_insert(DNode(69))
+    dll.print()
