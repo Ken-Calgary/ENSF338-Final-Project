@@ -1,13 +1,13 @@
 #Implementation of CircularLinkedList
-from myLib.datastructures.linear.SSL import SSL
+from myLib.datastructures.linear.SLL import SLL
 
-class CSLL(SSL):
+class CSLL(SLL):
     def __init__(self, head=None):
         super().__init__(head)
         if self.head:
             self.tail.next = self.head
 
-    def InsertHead(self, node):
+    def insertHead(self, node):
         if not self.head:
             self.head = node
             self.tail = node
@@ -18,7 +18,7 @@ class CSLL(SSL):
             self.tail.next = self.head
         self.size += 1
 
-    def InsertTail(self, node):
+    def insertTail(self, node):
         if not self.head:
             self.head = node
             self.tail = node
@@ -29,13 +29,13 @@ class CSLL(SSL):
             self.tail.next = self.head
         self.size += 1
 
-    def Insert(self, node, position):
+    def insert(self, node, position):
         if position < 0 or position > self.size:
             raise IndexError("Index out of range")
         elif position == 0:
-            self.InsertHead(node)
+            self.insertHead(node)
         elif position == self.size:
-            self.InsertTail(node)
+            self.insertTail(node)
         else:
             current = self.head
             for i in range(position-1):
@@ -44,16 +44,16 @@ class CSLL(SSL):
             current.next = node
             self.size += 1
 
-    def SortedInsert(self, node):
+    def sortedInsert(self, node):
         if (self.size == 0):
-            self.InsertHead(node)
+            self.insertHead(node)
             return
 
         current = self.head
         curIndex = 0
         while self.size != curIndex + 1 and self.head is not None:
             if current.data > current.next.data:
-                self.Sort()
+                self.sort()
                 break
             current = current.next
             curIndex += 1
@@ -63,9 +63,9 @@ class CSLL(SSL):
             self.tail = node
             node.next = self.head
         elif node.data < self.head.data:
-            self.InsertHead(node)
+            self.insertHead(node)
         elif node.data > self.tail.data:
-            self.InsertTail(node)
+            self.insertTail(node)
         else:
             current = self.head
             while current.next != self.head and current.next.data < node.data:
@@ -75,7 +75,7 @@ class CSLL(SSL):
         
             self.size += 1
 
-    def Search(self, node):
+    def search(self, node):
         current = self.head
         while current:
             if current.data == node.data:
@@ -85,7 +85,7 @@ class CSLL(SSL):
                 break
         return None
 
-    def DeleteHead(self):
+    def deleteHead(self):
         if not self.head:
             return
         if self.head == self.tail:
@@ -96,7 +96,7 @@ class CSLL(SSL):
             self.tail.next = self.head
         self.size -= 1
 
-    def DeleteTail(self):
+    def deleteTail(self):
         if not self.head:
             return
         if self.head == self.tail:
@@ -110,7 +110,7 @@ class CSLL(SSL):
             self.tail = current
         self.size -= 1
 
-    def Delete(self, node):
+    def delete(self, node):
         if self.head is None:
             return
         
@@ -141,8 +141,8 @@ class CSLL(SSL):
             if self.size == 0:
                 self.head = None
             return
-        return
-    def Sort(self):
+    
+    def sort(self):
         if self.size == 1:
             return
 
@@ -162,12 +162,12 @@ class CSLL(SSL):
             current = self.head.next
                     
 
-    def Clear(self):
+    def clear(self):
         self.head = None
         self.tail = None
         self.size = 0
 
-    def Print(self):
+    def print(self):
         print("List Size: ", self.size)
 
         current = self.head
