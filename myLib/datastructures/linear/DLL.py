@@ -62,6 +62,7 @@ class DoublyLL(SinglyLL):
                 new_node.next = current_node.next
                 current_node.next = new_node
 
+    # should be inherited
     def search(self, node):
         current_node = self.head
         while current_node and current_node != node:
@@ -78,6 +79,7 @@ class DoublyLL(SinglyLL):
             self.head = self.head.next
             self.head.prev = None
 
+    # should be inherited
     def delete_tail(self):
         if not self.tail:
             return
@@ -140,10 +142,12 @@ class DoublyLL(SinglyLL):
             # Move to next node
             current_node = next_node
 
+    # should be inherited
     def clear(self):
         self.head = None
         self.tail = None
 
+    # should be inherited
     def print(self):
         current_node = self.head
         while current_node:
@@ -151,6 +155,7 @@ class DoublyLL(SinglyLL):
             current_node = current_node.next
         print()
 
+    # should be inherited
     def isSorted(self):
             if not self.head or not self.head.next:
                 return True
