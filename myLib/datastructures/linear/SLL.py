@@ -1,4 +1,4 @@
-class SSL:
+class SLL:
     def __init__(self, head=None):
         self.head = head
         self.tail = head
@@ -11,14 +11,14 @@ class SSL:
 
             self.size += 1
 
-    def InsertHead(self, node):
+    def insertHead(self, node):
         node.next = self.head
         self.head = node
         self.size += 1
         if self.size == 1:
             self.tail = node
 
-    def InsertTail(self, node):
+    def insertTail(self, node):
         if self.head is None:
             self.head = node
             self.tail = node
@@ -27,20 +27,23 @@ class SSL:
             self.tail = node
         self.size += 1
 
-    def Insert(self, node, position):
-        if position < 0 or position > self.size:
-            raise IndexError("Position out of bounds")
+    def insert(self, node, position):
         if position == 0:
             self.InsertHead(node)
-        elif position == self.size:
-            self.InsertTail(node)
-        else:
-            prev_node = self.get_node(position - 1)
-            node.next = prev_node.next
-            prev_node.next = node
-            self.size += 1
+            return
+        current = self.head
+        prev = None
+        pos = 0
 
-    def SortedInsert(self, node):
+        while current is not None and pos < position:
+            prev = current
+            current = current.next
+            pos += 1
+        prev.next = node
+        node.next = current
+        self.size+= 1
+
+    def sortedInsert(self, node):
         if self.head is None:
             self.head = node
             self.tail = node
@@ -51,14 +54,14 @@ class SSL:
             # sorts the linkedlist if not already sorted
             while current is not None and current.next is not None:
                 if current.data > current.next.data:
-                    self.Sort()
+                    self.sort()
                     break
                 current = current.next
             
             if node.data < self.head.data:
-                self.InsertHead(node)
+                self.insertHead(node)
             elif node.data > self.tail.data:
-                self.InsertTail(node)
+                self.insertTail(node)
             else:
                 current = self.head
                 while current.next is not None and node.data > current.next.data:
@@ -68,7 +71,7 @@ class SSL:
                 current.next = node
                 self.size += 1
 
-    def Search(self, node):
+    def search(self, node):
         current_node = self.head
         while current_node:
             if current_node.data == node.data:
@@ -76,7 +79,7 @@ class SSL:
             current_node = current_node.next
         return None
 
-    def DeleteHead(self):
+    def deleteHead(self):
         if not self.head:
             return
         self.head = self.head.next
@@ -84,7 +87,7 @@ class SSL:
         if not self.head:
             self.tail = None
 
-    def DeleteTail(self):
+    def deleteTail(self):
         if not self.head:
             return
         if self.size == 1:
@@ -99,11 +102,11 @@ class SSL:
         self.tail = current_node
         self.size -= 1
 
-    def Delete(self, node):
+    def delete(self, node):
         if not self.head:
             return
         if self.head.data == node.data:
-            self.DeleteHead()
+            self.deleteHead()
             return
         current_node = self.head.next
         prev_node = self.head
@@ -117,7 +120,7 @@ class SSL:
             prev_node = current_node
             current_node = current_node.next
 
-    def Sort(self):
+    def sort(self):
         if not self.head or not self.head.next:
             return
     
@@ -141,12 +144,12 @@ class SSL:
             while self.tail.next:
                 self.tail = self.tail.next
     
-    def Clear(self):
+    def clear(self):
         self.head = None
         self.tail = None
         self.size = 0
 
-    def Print(self):
+    def print(self):
         print("List Size: " ,self.size)
         
         current = self.head
