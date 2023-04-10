@@ -1,3 +1,4 @@
 build
 datastructures.egg-info
 dist
+*.egg-info
