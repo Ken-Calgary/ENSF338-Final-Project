@@ -1,23 +1,21 @@
 # Implementation of DoublyLinkedList
 
 from myLib.datastructures.nodes.DNode import DNode
+from SLL import SLL
 import random
 
-class SinglyLL():
-
-    def __init__(self, node):
-        self.head = node
-
-class DoublyLL(SinglyLL):
+class DoublyLL(SLL):
 
     def __init__(self, node=None):
         super().__init__(node)
-        self.tail = node
 
     def insert_head(self, node):
         node.next = self.head
         self.head.prev = node
         self.head = node
+        self.size += 1
+        if self.size == 1:
+            self.tail = node
 
     def insert_tail(self, node):
         if not self.head:
@@ -27,6 +25,7 @@ class DoublyLL(SinglyLL):
             node.prev = self.tail
             self.tail.next = node
             self.tail = node
+        self.size += 1
 
     def insert(self, node, position):
         if position == 0:
@@ -44,10 +43,12 @@ class DoublyLL(SinglyLL):
                 node.next.prev = node
             else:
                 self.tail = node
+            self.size += 1
 
     def sorted_insert(self, new_node):
         if not self.head:
             self.head = new_node
+            self.size += 1
         else:
             if not self.isSorted():
                 self.sort()
@@ -55,19 +56,14 @@ class DoublyLL(SinglyLL):
             if new_node.data <= self.head.data:
                 new_node.next = self.head
                 self.head = new_node
+                self.size += 1
             else:
                 current_node = self.head
                 while current_node.next and current_node.next.data <= new_node.data:
                     current_node = current_node.next
                 new_node.next = current_node.next
                 current_node.next = new_node
-
-    # should be inherited
-    def search(self, node):
-        current_node = self.head
-        while current_node and current_node != node:
-            current_node = current_node.next
-        return current_node
+                self.size += 1
 
     def delete_head(self):
         if not self.head:
@@ -75,20 +71,11 @@ class DoublyLL(SinglyLL):
         if self.head == self.tail:
             self.head = None
             self.tail = None
+            self.size -= 1
         else:
             self.head = self.head.next
             self.head.prev = None
-
-    # should be inherited
-    def delete_tail(self):
-        if not self.tail:
-            return
-        if self.head == self.tail:
-            self.head = None
-            self.tail = None
-        else:
-            self.tail = self.tail.prev
-            self.tail.next = None
+            self.size -= 1
 
     def delete(self, node):
         if not node:
@@ -142,28 +129,15 @@ class DoublyLL(SinglyLL):
             # Move to next node
             current_node = next_node
 
-    # should be inherited
-    def clear(self):
-        self.head = None
-        self.tail = None
+dll = DoublyLL()
 
-    # should be inherited
-    def print(self):
-        current_node = self.head
-        while current_node:
-            print(current_node.data, end=' ')
-            current_node = current_node.next
-        print()
+for i in range(10):
+    i = random.randint(0, 100)
+    node = DNode(i)
+    dll.insert_tail(node)
 
-    # should be inherited
-    def isSorted(self):
-            if not self.head or not self.head.next:
-                return True
-
-            current_node = self.head
-            while current_node.next:
-                if current_node.data > current_node.next.data:
-                    return False
-                current_node = current_node.next
-
-            return True
+dll.print()
+dll.sort()
+dll.print()
+dll.insert(DNode(10000), 3)
+dll.print()
