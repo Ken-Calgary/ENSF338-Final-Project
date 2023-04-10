@@ -11,9 +11,9 @@ class Stack(SLL):
     def insertTail(self, node):
         return
     
-    def insert(self, node, position):
-        return
-
+    def peek(self):
+        return self.head.data
+    
     def pop(self):
         head = self.head
         super().deleteHead()
