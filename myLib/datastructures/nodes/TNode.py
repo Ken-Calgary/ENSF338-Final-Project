@@ -37,7 +37,7 @@ class TNode:
     def get_parent(self):
         return self.parent
     
-    def print_info(self):
+    def print(self):
         print(f"Node value: {self.data}, Balance: {self.balance}")
         
     def __str__(self):
