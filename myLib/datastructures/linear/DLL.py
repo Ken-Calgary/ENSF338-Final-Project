@@ -128,16 +128,3 @@ class DoublyLL(SLL):
             
             # Move to next node
             current_node = next_node
-
-dll = DoublyLL()
-
-for i in range(10):
-    i = random.randint(0, 100)
-    node = DNode(i)
-    dll.insert_tail(node)
-
-dll.print()
-dll.sort()
-dll.print()
-dll.insert(DNode(10000), 3)
-dll.print()
