@@ -8,9 +8,9 @@ class AVL(BST):
             if not node:
                 return
 
-            traverse(node.left)
-            self.insert(node.data)
             traverse(node.right)
+            self.insert(node.data)
+            traverse(node.left)
         
         if isinstance(data, int):
             super().__init__(data)
@@ -123,4 +123,8 @@ class AVL(BST):
             node = _rotate_left(node)
 
         node.balance = _calc_balance(node)
+        if node.left is not None:
+            node.left.set_parent(node)
+        if node.right is not None:
+            node.right.set_parent(node)
         return node
