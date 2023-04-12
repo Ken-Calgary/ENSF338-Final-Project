@@ -46,6 +46,7 @@ class AVL(BST):
                 node = self._balance(node)
                 return node
         self.root = _insert(self.root, data)
+        self.root.set_parent(None)
 
     def delete(self, data):
         def _find_min(self, node):
@@ -122,9 +123,11 @@ class AVL(BST):
                 node.right = _rotate_right(node.right)
             node = _rotate_left(node)
 
-        node.balance = _calc_balance(node)
+        node.balance = _get_balance(node)
+
         if node.left is not None:
             node.left.set_parent(node)
         if node.right is not None:
             node.right.set_parent(node)
+
         return node
