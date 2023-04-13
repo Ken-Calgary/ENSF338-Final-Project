@@ -85,7 +85,7 @@ class CSLL(SLL):
                 break
         return None
 
-    def deleteHead(self):
+    def delete_head(self):
         if not self.head:
             return
         if self.head == self.tail:
@@ -96,7 +96,7 @@ class CSLL(SLL):
             self.tail.next = self.head
         self.size -= 1
 
-    def deleteTail(self):
+    def delete_tail(self):
         if not self.head:
             return
         if self.head == self.tail:
@@ -185,3 +185,5 @@ class CSLL(SLL):
             print(current.data, end = " ")
             current = current.next
             curIndex += 1
+        
+        print("\n")
