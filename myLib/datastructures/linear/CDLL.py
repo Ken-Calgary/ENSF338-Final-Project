@@ -137,17 +137,3 @@ class CircularDoublyLL(DoublyLL):
             if current == self.head:
                 break
         print("\n")
-
-
-if __name__ == '__main__':
-    cdll = CircularDoublyLL()
-    for i in range(10):
-        i = random.randint(0, 100)
-        node = DNode(i)
-        cdll.insert_tail(node)
-
-    cdll.print()
-    cdll.sort()
-    cdll.print()
-    cdll.sorted_insert(DNode(69))
-    cdll.print()
