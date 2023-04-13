@@ -2,7 +2,7 @@
 
 import random
 from myLib.datastructures.nodes.DNode import DNode
-from SLL import SLL
+from .SLL import SLL
 
 class DoublyLL(SLL):
 
@@ -130,16 +130,3 @@ class DoublyLL(SLL):
             
             # Move to next node
             current_node = next_node
-
-if __name__ == '__main__':
-    dll = DoublyLL()
-    for i in range(10):
-        i = random.randint(0, 100)
-        node = DNode(i)
-        dll.insert_tail(node)
-
-    dll.print()
-    dll.sort()
-    dll.print()
-    dll.sorted_insert(DNode(69))
-    dll.print()
