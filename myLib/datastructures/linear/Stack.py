@@ -1,5 +1,5 @@
 # Implemntation of Stack
-from SLL import SLL
+from .SLL import SLL
 from myLib.datastructures.nodes.DNode import DNode
 import random
 
@@ -9,6 +9,8 @@ class Stack(SLL):
         super().__init__(head)
 
     def push(self, node):
+        if isinstance(node, int):
+            node = DNode(node)
         super().insert_head(node)
     
     def insert_head(self, node):
@@ -19,6 +21,12 @@ class Stack(SLL):
     
     def peek(self):
         return self.head.data
+    
+    def insert(self, node, position):
+        return
+    
+    def delete(self, node):
+        return
     
     def pop(self):
         head = self.head
