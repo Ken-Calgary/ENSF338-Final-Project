@@ -1,5 +1,9 @@
+from myLib.datastructures.nodes.DNode import DNode
+
 class SLL:
     def __init__(self, head=None):
+        if isinstance(head, int):
+            head = DNode(head)
         self.head = head
         self.tail = head
         self.size = 0
