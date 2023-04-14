@@ -18,51 +18,49 @@ class BST():
         return self.root
     
     def insert(self, data):
+        def _insert_node( node):
+            if not self.root:
+                self.root = node
+                return
+            current = self.root
+            while current:
+                if node.data <= current.data:
+                    if current.left:
+                        current = current.left
+                    else:
+                        current.left = node
+                        break
+                elif node.data > current.data:
+                    if current.right:
+                        current = current.right
+                    else:
+                        current.right = node
+                        break
+        # helper
+        def _insert_val( val):
+            if not self.root:
+                self.root = TNode(val)
+                return
+            
+            
+            current = self.root
+            while current:
+                if val <= current.data:
+                    if current.left:
+                        current = current.left
+                    else:
+                        current.left = TNode(val)
+                        break
+                elif val > current.data:
+                    if current.right:
+                        current = current.right
+                    else:
+                        current.right = TNode(val)
+                        break
         if isinstance(data, int):
-            self.insert_val(data)
+            _insert_val(data)
         else:
-            self.insert_node(data)
-
-    # helper
-    def insert_node(self, node):
-        if not self.root:
-            self.root = node
-            return
-        current = self.root
-        while current:
-            if node.data <= current.data:
-                if current.left:
-                    current = current.left
-                else:
-                    current.left = node
-                    break
-            elif node.data > current.data:
-                if current.right:
-                    current = current.right
-                else:
-                    current.right = node
-                    break
-    # helper
-    def insert_val(self, val):
-        if not self.root:
-            self.root = TNode(val)
-            return
-        
-        
-        current = self.root
-        while current:
-            if val <= current.data:
-                if current.left:
-                    current = current.left
-                else:
-                    current.left = TNode(val)
-                    break
-            elif val > current.data:
-                if current.right:
-                    current = current.right
-                else:
-                    current.right = TNode(val)
-                    break
+            _insert_node(data)
 
     def delete(self, val): 
         def get_min_node(node):
