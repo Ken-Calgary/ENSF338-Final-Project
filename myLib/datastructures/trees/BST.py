@@ -30,7 +30,7 @@ class BST():
             return
         current = self.root
         while current:
-            if node.data < current.data:
+            if node.data <= current.data:
                 if current.left:
                     current = current.left
                 else:
@@ -51,7 +51,7 @@ class BST():
         
         current = self.root
         while current:
-            if val < current.data:
+            if val <= current.data:
                 if current.left:
                     current = current.left
                 else:
