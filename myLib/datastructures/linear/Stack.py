@@ -1,7 +1,6 @@
 # Implemntation of Stack
 from .SLL import SLL
 from myLib.datastructures.nodes.DNode import DNode
-import random
 
 
 class Stack(SLL):
