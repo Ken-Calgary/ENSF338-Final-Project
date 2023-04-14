@@ -1,7 +1,6 @@
 # Implemntation of Queue
 
-import random
-from SLL import SLL
+from .SLL import SLL
 from myLib.datastructures.nodes.DNode import DNode
 
 
@@ -11,6 +10,8 @@ class LLQueue(SLL):
         super().__init__(head)
 
     def enqueue(self, node):
+        if isinstance(node, int):
+            node = DNode(node)
         super().insert_tail(node)
 
     def dequeue(self):
@@ -42,16 +43,3 @@ class LLQueue(SLL):
 
     def sort(self):
         return
-
-if __name__ == '__main__':
-    queue = LLQueue()
-    for i in range(10):
-        i = random.randint(0, 100)
-        node = DNode(i)
-        queue.enqueue(node)
-
-    queue.print()
-    print(queue.dequeue().data)
-    queue.print()
-    print(queue.enqueue(DNode(5)))
-    queue.print()

@@ -4,9 +4,8 @@ class BST():
     def __init__(self, root = None):
         if isinstance(root, int):
             root = TNode(root)
-            self.root = root
-        else:
-            self.root = root
+
+        self.root = root
     
     def set_root(self, root):
         if isinstance(root, int):
@@ -14,9 +13,6 @@ class BST():
             self.root = root
         else:
             self.root = root
-
-            
-    
 
     def get_root(self):
         return self.root
@@ -34,7 +30,7 @@ class BST():
             return
         current = self.root
         while current:
-            if node.data < current.data:
+            if node.data <= current.data:
                 if current.left:
                     current = current.left
                 else:
@@ -55,7 +51,7 @@ class BST():
         
         current = self.root
         while current:
-            if val < current.data:
+            if val <= current.data:
                 if current.left:
                     current = current.left
                 else:
@@ -140,3 +136,5 @@ class BST():
                     queue.append(curr.right)
             
             print()
+
+        print()

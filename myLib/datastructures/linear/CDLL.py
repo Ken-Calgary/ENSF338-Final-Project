@@ -1,7 +1,7 @@
 # Implemntation of CircularDoublyLinkedList
 
 from myLib.datastructures.nodes.DNode import DNode
-from DLL import DoublyLL
+from .DLL import DoublyLL
 import random
 
 class CircularDoublyLL(DoublyLL):
@@ -106,6 +106,8 @@ class CircularDoublyLL(DoublyLL):
         self.tail.next = self.head
 
     def is_sorted(self):
+        if self.head is None:
+            return
 
         # unlink head and tail
         self.head.prev = None
@@ -129,23 +131,9 @@ class CircularDoublyLL(DoublyLL):
         
         current = self.head
         print("Content List: ", end = " ")
-        while True:
+        while self.head is not None:
             print(current.data, end = " ")
             current = current.next
             if current == self.head:
                 break
         print("\n")
-
-
-if __name__ == '__main__':
-    cdll = CircularDoublyLL()
-    for i in range(10):
-        i = random.randint(0, 100)
-        node = DNode(i)
-        cdll.insert_tail(node)
-
-    cdll.print()
-    cdll.sort()
-    cdll.print()
-    cdll.sorted_insert(DNode(69))
-    cdll.print()
