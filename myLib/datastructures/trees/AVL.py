@@ -49,33 +49,20 @@ class AVL(BST):
         self.root.set_parent(None)
 
     def delete(self, data):
-        def _find_min(self, node):
-            while node.left is not None:
-                node = node.left
-            return node
-        def _delete(node, data):
-            if node is None:
-                return None
-            elif data < node.data:
-                node.left = _delete(node.left, data)
-            elif data > node.data:
-                node.right = _delete(node.right, data)
-            else:
-                if node.left is None and node.right is None:
-                    node = None
-                elif node.left is None:
-                    node = node.right
-                elif node.right is None:
-                    node = node.left
-                else:
-                    min_node = _find_min(node.right)
-                    node.data = min_node.data
-                    node.right = _delete(node.right, min_node.data)
+        super().delete(data)
 
-            if node is not None:
-                node = self._balance(node)
-            return node
-        self.root = _delete(self.root, data)
+    def set_root(self, root):
+        def traverse(node):
+            if not node:
+                return
+
+            traverse(node.right)
+            self.insert(node.data)
+            traverse(node.left)
+        
+        super().__init__(None)
+        traverse(root)
+
 
     def _balance(self, node):
         def _get_height( node):
