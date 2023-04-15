@@ -59,16 +59,16 @@ Examples of creating a stack: Stack(), Stack(10), Stack(DNode(10))
 **IMPORTANT:** As the stack is extended from the SLL class, some methods like insert, delete, and etc. will be unavailable to be used for the stack data structure. As a stack datastructures follows a method of 'First In Last Out' (FILO).
 
 6. `Queue`: The constructors are the same as singly linked list as it has been extended from the singly linked list class. The queue will include these methods:
-    - enqueue(node || int): Inserts a node into the queue
-    - dequeue(): Deletes the oldest node inserted, and returns the deleted node
-    - search(node): Searches for specified node, and returns the node. Otherwise, return None
-    - clear(): Empties the linked list
-    - print(): Prints the list size, sorted status and contents within the list<br />
+    - **enqueue(node || int):** Inserts a node into the queue
+    - **dequeue():** Deletes the oldest node inserted, and returns the deleted node
+    - **search(node):** Searches for specified node, and returns the node. Otherwise, return None
+    - **clear():** Empties the linked list
+    - **print():** Prints the list size, sorted status and contents within the list<br />
 Examples of creating a queue: Queue(), Queue(10), Queue(DNode(10))
 
 **IMPORTANT:** The mentioned methods above are the only methods available for a queue. You may see the other methods, such as insert, delete, sort, and etc. However, they are overwritten to do nothing as a queue follows a method of 'First In First Out' (FIFO)
 
-## Trees
+## Types of Trees
 
 1. `BST (Binary Search Tree)`: The binary search tree can be initialized in three ways, by initializing it with no arguments, an integer, or a TNode. For this implementation, these are the following methods:
     - **set_root(node || int):** Sets a new root, may be used with an integer, node or a tree.
